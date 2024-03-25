@@ -1,0 +1,142 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Awesome Shopping Complex</title>
+    <link rel="icon" href="assests/market.png" type="image/png">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="bootstrap.js"></script>
+</head>
+<body>
+  <img src="assests/market.png" class="mt-lg-4 ms-4" width="50" alt="">
+    <div class="col-lg-6 col-md-8 col-11 mx-auto mt-lg-5 mt-4 p-lg-5 p-3 shadow-lg bg-dark" id="bg-dark">
+        <div class="editT">
+     <h1 class="text-center text-secondary text-decoration-underline fw-2 fs-2">Awesome Shopping Complex</h1>
+     <p class="alert alert-danger text-center p-2 animate__animated animate__shakeX animate__infinite" id="err">Please fill in the empty box</p>
+<div class="form-floating mb-3 ">
+        <input type="text" class="form-control" id="items">
+        <label for="floatingInput">Add Your Items</label>
+      </div>
+      <button onclick="submitItem()" class="btn btn-sm my-3 w-100 btn-secondary ">Submit</button>
+    </div>
+    </div>
+
+    
+    <div id="showOrder" class="col-lg-6 col-md-8 col-11 mx-auto mt-lg-2 mt-3 shadow-sm p-3"></div>
+     
+    <div class="col-lg-6 col-md-8 col-11 mx-auto mt-lg-2 mt-3 shadow-lg bg-dark p-lg-5 p-2" id="divnoitem"></div>
+
+    
+    <div class="col-lg-6 col-md-8 col-11 mx-auto mt-lg-2 mt-3 shadow-lg bg-dark p-lg-5 p-2" id="divTable">
+        <table class="table" id="table">
+            <tr>
+                <th tableWord="col">S/N</th>
+                <th tableWord="col">Items</th>
+            </tr>
+    
+            <tbody id="show"></tbody>
+        </table>
+        <!-- <div id="show"></div> -->
+        <div class="row">
+            <div class="col-lg-3 col">
+                <button onclick="delLast()" class="btn btn-sm btn-danger mx-auto my-2">Delete Last</button>
+            </div>
+            <div class="col-lg-3 col">
+                <button onclick="delFirst()" class="btn btn-sm btn-dark mx-auto my-2">Delete First</button>
+            </div>
+            <div class="col-lg-3 col">
+                <button  class="btn btn-sm btn-warning mx-auto my-2"  data-bs-toggle="modal" data-bs-target="#exampleModal3">Delete Any</button>
+            </div>
+            <div class="col-lg-3 col">
+                <button class="btn btn-sm btn-info mx-auto my-2 "  data-bs-toggle="modal" data-bs-target="#exampleModal2">Add</button>
+            </div>
+            <div class="col-lg-3 col">
+                <button onclick="delAll()" class="btn btn-sm btn-secondary mx-auto my-2">Delete All</button>
+            </div>
+            <div class="col-lg-3 col">
+                <button  class="btn btn-sm btn-success mx-auto my-2"  data-bs-toggle="modal" data-bs-target="#exampleModal1">Edit</button>
+            </div>
+        </div>
+
+    </div>
+ 
+
+  
+  <!-- Modal Edit -->
+  <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel1">Edit items</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <p class="alert alert-danger text-center p-2 animate__animated animate__shakeX animate__infinite" id="errSecond">Please fill in the empty box</p>
+            <div class="form-floating mb-3 form- ">
+                <input type="number" class="form-control" id="editNumber">
+                <label for="floatingInput">Which Number Are You Editing</label>
+              </div>
+              <div class="form-floating mb-3 form- ">
+                <input type="text" class="form-control" id="newValue">
+                <label for="floatingInput">Type in your new value</label>
+              </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="Edit()">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+   <!-- Modal Add First -->
+   <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel2">Add items to beginning</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <p class="alert alert-danger text-center p-2 animate__animated animate__shakeX animate__infinite" id="errFirst">Please fill in the empty box</p>
+            <div class="form-floating mb-3 form- ">
+                <input type="text" class="form-control" id="firstItems">
+                <label for="floatingInput">Add Your Items</label>
+              </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal"  onclick="add()">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+       <!-- Modal Delete Any -->
+   <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel3" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel2">Which Number</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <p class="alert alert-danger text-center p-2 animate__animated animate__shakeX animate__infinite" id="errThird">Please fill in the empty box</p>
+            <div class="form-floating mb-3 form- ">
+                <input type="number" class="form-control" id="delItems">
+                <label for="floatingInput">Delete Any Item</label>
+              </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal"  onclick="delAny()">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

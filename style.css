@@ -1,0 +1,18 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+body{
+    background-image: url(assests/depositphotos_54324565-stock-photo-online-shopping-and-e-commerce.webp);
+    /* background: no-repeat; */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.bg-dark{
+ background-color: rgba(0, 0, 0, 0.6) !important;
+}
+#err, #showOrder, #divTable, #errFirst, #errSecond, #errThird{
+display: none;
+}
